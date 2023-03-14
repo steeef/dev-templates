@@ -40,12 +40,12 @@
           description = "Python 3.9 development environment";
         };
 
-        python38 = {
+        python310 = {
           path = ./python310;
           description = "Python 3.10 development environment";
         };
 
-        python38 = {
+        python311 = {
           path = ./python311;
           description = "Python 3.11 development environment";
         };
