@@ -105,9 +105,9 @@
           description = "Purescript development environment";
         };
 
-        python = {
-          path = ./python;
-          description = "Python development environment";
+        python38 = {
+          path = ./python38;
+          description = "Python 3.8 development environment";
         };
 
         ruby = {

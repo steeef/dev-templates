@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-22.11";
     flake-utils.url = "github:numtide/flake-utils";
-    mach-nix.url = "github:/DavHau/mach-nix";
   };
 
   outputs =
@@ -18,8 +17,7 @@
     let
       overlays = [
         (self: super: {
-          machNix = mach-nix.defaultPackage.${system};
-          python = super.python311;
+          python = super.python38;
         })
       ];
 
@@ -27,8 +25,8 @@
     in
     {
       devShells.default = pkgs.mkShell {
-        packages = with pkgs; [ python machNix virtualenv ] ++
-          (with pkgs.python311Packages; [ pip ]);
+        packages = with pkgs; [ python virtualenv ] ++
+          (with pkgs.python38Packages; [ pip ]);
 
         shellHook = ''
           ${pkgs.python}/bin/python --version
