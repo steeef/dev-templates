@@ -51,11 +51,13 @@
     {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
+          kubernetes-helm
           kubectl
         ];
 
         shellHook = with pkgs; ''
           ${kubectl}/bin/kubectl version --client=true
+          ${kubernetes-helm}/bin/helm version
         '';
       };
     });
