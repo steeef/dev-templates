@@ -35,6 +35,21 @@
           description = "Python 3.8 development environment";
         };
 
+        python39 = {
+          path = ./python39;
+          description = "Python 3.9 development environment";
+        };
+
+        python38 = {
+          path = ./python310;
+          description = "Python 3.10 development environment";
+        };
+
+        python38 = {
+          path = ./python311;
+          description = "Python 3.11 development environment";
+        };
+
         ruby = {
           path = ./ruby;
           description = "Ruby development environment";
