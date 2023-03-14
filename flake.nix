@@ -100,7 +100,7 @@
             --experimental-features 'nix-command flakes' \
             flake init \
             --template \
-            "github:the-nix-way/dev-templates#''${TEMPLATE}"
+            "github:steeef/dev-templates#''${TEMPLATE}"
         '';
 
         update = writeScriptBin "update" ''
