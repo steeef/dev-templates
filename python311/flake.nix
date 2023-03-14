@@ -10,7 +10,6 @@
     { self
     , nixpkgs
     , flake-utils
-    , mach-nix
     }:
 
     flake-utils.lib.eachDefaultSystem (system:
