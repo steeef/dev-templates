@@ -25,7 +25,7 @@
         ];
 
         shellHook = with pkgs; ''
-          ${terraform}/bin/terraform --version
+          env CHECKPOINT_DISABLE=1 ${terraform}/bin/terraform --version
         '';
       };
     });
