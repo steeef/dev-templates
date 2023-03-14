@@ -65,6 +65,11 @@
           description = "Rust development environment with Rust version defined by a rust-toolchain.toml file";
         };
 
+        terraform = {
+          path = ./terraform;
+          description = "HashiCorp Terraform development environment";
+        };
+
         # Aliases
         rt = rust-toolchain;
       };
