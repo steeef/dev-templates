@@ -55,6 +55,11 @@
           description = "Python 3.11 development environment";
         };
 
+        python311poetry = {
+          path = ./python311poetry;
+          description = "Python 3.11 poetry development environment";
+        };
+
         ruby = {
           path = ./ruby;
           description = "Ruby development environment";
