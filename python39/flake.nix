@@ -4,18 +4,21 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-22.11";
     flake-utils.url = "github:numtide/flake-utils";
+    mach-nix.url = "github:/DavHau/mach-nix";
   };
 
   outputs =
     { self
     , nixpkgs
     , flake-utils
+    , mach-nix
     }:
 
     flake-utils.lib.eachDefaultSystem (system:
     let
       overlays = [
         (self: super: {
+          machNix = mach-nix.defaultPackage.${system};
           python = super.python39;
         })
       ];
@@ -24,11 +27,15 @@
     in
     {
       devShells.default = pkgs.mkShell {
-        packages = with pkgs; [ python virtualenv ] ++
+        packages = with pkgs; [ python machNix virtualenv ] ++
           (with pkgs.python39Packages; [ pip ]);
 
         shellHook = ''
           ${pkgs.python}/bin/python --version
+          if [ ! -d "./.venv" ]; then
+            ${pkgs.python}/bin/python -m venv ./.venv
+          fi
+          source ./.venv/bin/activate
         '';
       };
     });
