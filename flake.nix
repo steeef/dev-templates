@@ -20,6 +20,11 @@
           description = "HashiCorp DevOps tools development environment";
         };
 
+        hugo = {
+          path = ./hugo;
+          description = "Hugo static site generator environment";
+        };
+
         kubectl124 = {
           path = ./kubectl124;
           description = "Kubernetes 1.24 development environment";
