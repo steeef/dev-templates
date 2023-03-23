@@ -45,6 +45,11 @@
           description = "Python 3.8 development environment";
         };
 
+        python38poetry = {
+          path = ./python38poetry;
+          description = "Python 3.8 poetry development environment";
+        };
+
         python39 = {
           path = ./python39;
           description = "Python 3.9 development environment";
