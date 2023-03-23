@@ -45,11 +45,6 @@
           description = "Python 3.8 development environment";
         };
 
-        python38poetry = {
-          path = ./python38poetry;
-          description = "Python 3.8 poetry development environment";
-        };
-
         python39 = {
           path = ./python39;
           description = "Python 3.9 development environment";
@@ -63,11 +58,6 @@
         python311 = {
           path = ./python311;
           description = "Python 3.11 development environment";
-        };
-
-        python311poetry = {
-          path = ./python311poetry;
-          description = "Python 3.11 poetry development environment";
         };
 
         ruby = {
