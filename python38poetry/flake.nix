@@ -19,24 +19,22 @@
 
     flake-utils.lib.eachDefaultSystem (system:
     let
-      overlays = [
-        (self: super: {
-          python = super.python38;
-        })
-      ];
-      inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication;
-      pkgs = import nixpkgs { inherit overlays system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ poetry2nix.overlay ];
+      };
+      poetryEnv = pkgs.poetry2nix.mkPoetryEnv {
+        projectDir = ./.;
+        python = pkgs.python38;
+        editablePackageSources = {
+          pkgSrc = ./.;
+        };
+      };
     in
     {
-      packages = {
-        myapp = mkPoetryApplication { projectDir = self; };
-        default = self.packages.${system}.myapp;
-      };
       devShells.default = pkgs.mkShell {
-        packages = with pkgs; [ poetry2nix.packages.${system}.poetry ];
-
+        buildInputs = [ poetryEnv pkgs.python38Packages.pip ];
         shellHook = ''
-          ${pkgs.python}/bin/python --version
           ${pkgs.poetry}/bin/poetry --version
         '';
       };
