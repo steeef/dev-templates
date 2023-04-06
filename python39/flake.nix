@@ -16,9 +16,6 @@
     let
       pkgs = import nixpkgs { inherit system; };
       pythonPackages = pkgs.python39Packages;
-      buildInputs = with pkgs; [
-        openssl
-      ];
       venvDir = "./.venv";
       packages = with pythonPackages; [
         python
@@ -31,7 +28,7 @@
     {
       devShells.default = pkgs.mkShell {
         inherit venvDir;
-        buildInputs = buildInputs;
+        buildInputs = pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.openssl ];
         packages = packages;
         postShellHook = postShellHook;
       };
