@@ -22,7 +22,7 @@
         venvShellHook
       ];
       postShellHook = ''
-        PYTHONPATH=\$PWD/\${venvDir}/\${pythonPackages.python.sitePackages}/:\$PYTHONPATH
+        PYTHONPATH="$(pwd)/${venvDir}/${pythonPackages.python.sitePackages}/:$PYTHONPATH"
       '';
     in
     {
