@@ -19,7 +19,6 @@
       venvDir = "./.venv";
       packages = with pythonPackages; [
         python
-        poetry
         venvShellHook
       ];
       postShellHook = ''
