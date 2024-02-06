@@ -17,6 +17,9 @@
       pkgs = import nixpkgs { inherit system; };
       pythonPackages = pkgs.python310Packages;
       venvDir = "./.venv";
+      buildInputs = with pkgs; [
+        openssl
+      ];
       packages = with pythonPackages; [
         python
         venvShellHook
@@ -27,10 +30,8 @@
     in
     {
       devShells.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          openssl
-        ];
         inherit venvDir;
+        buildInputs = buildInputs;
         packages = packages;
         postShellHook = postShellHook;
       };
