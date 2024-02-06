@@ -17,9 +17,7 @@
       pkgs = import nixpkgs { inherit system; };
       pythonPackages = pkgs.python310Packages;
       venvDir = "./.venv";
-      buildInputs = with pkgs; [
-        openssl
-      ];
+      buildInputs = pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.openssl ];
       packages = with pythonPackages; [
         python
         venvShellHook
