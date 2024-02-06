@@ -27,6 +27,9 @@
     in
     {
       devShells.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          openssl
+        ];
         inherit venvDir;
         packages = packages;
         postShellHook = postShellHook;
