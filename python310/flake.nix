@@ -2,7 +2,7 @@
   description = "A Nix-flake-based Python 3.10 development environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
